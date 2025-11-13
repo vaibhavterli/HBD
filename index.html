@@ -3,249 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday! 🎉</title>
+    <title>🎂 Happy Birthday Beautiful Soul! 🎉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Birthday Theme Colors - CUSTOMIZE THESE */
             --color-primary: #FF69B4;
             --color-secondary: #FFD700;
+            --color-accent: #BA8FFF;
             --color-background: #FFF5F7;
             --color-text: #333333;
+            --color-text-light: #666666;
             --color-white: #FFFFFF;
-            --color-overlay: rgba(0, 0, 0, 0.8);
+            
+            /* Fonts */
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #FFF5F7 0%, #FFE8F0 100%);
+            font-family: var(--font-body);
+            background-color: var(--color-background);
             color: var(--color-text);
+            line-height: 1.6;
             overflow-x: hidden;
-            scroll-behavior: smooth;
         }
-
-        /* Confetti Animation */
-        .confetti-container {
+        
+        /* Confetti Canvas */
+        #confetti-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1000;
-            overflow: hidden;
+            z-index: 9999;
         }
-
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--color-secondary);
-            animation: confetti-fall linear infinite;
-        }
-
-        @keyframes confetti-fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
+        
         /* Hero Section */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 2rem;
             position: relative;
-            background: linear-gradient(135deg, #FFE8F0 0%, #FFF5F7 50%, #FFE8CC 100%);
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(186, 143, 255, 0.1) 100%);
+            overflow: hidden;
         }
-
+        
+        .balloons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
         .balloon {
             position: absolute;
-            font-size: 3rem;
+            font-size: 48px;
             animation: float 6s ease-in-out infinite;
         }
-
-        .balloon:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-        .balloon:nth-child(2) { left: 80%; top: 30%; animation-delay: 1s; }
-        .balloon:nth-child(3) { left: 15%; top: 60%; animation-delay: 2s; }
-        .balloon:nth-child(4) { right: 15%; top: 50%; animation-delay: 1.5s; }
-
+        
+        .balloon-1 { left: 10%; animation-delay: 0s; }
+        .balloon-2 { left: 30%; animation-delay: 1s; }
+        .balloon-3 { right: 30%; animation-delay: 2s; }
+        .balloon-4 { right: 10%; animation-delay: 3s; }
+        
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
             50% { transform: translateY(-30px) rotate(5deg); }
         }
-
+        
         .hero-content {
-            z-index: 10;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .cake-icon {
-            font-size: 5rem;
-            margin: 1rem 0;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--color-text);
-            margin: 1rem 0;
-            font-style: italic;
-        }
-
-        /* Section Styling */
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            color: var(--color-primary);
-            margin-bottom: 2rem;
             position: relative;
-            display: inline-block;
-            width: 100%;
+            z-index: 1;
         }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
-            border-radius: 2px;
-        }
-
-        /* Upload Buttons */
-        .upload-container {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-
-        .upload-btn {
-            background: linear-gradient(135deg, var(--color-primary), #FF85C0);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
-            transition: all 0.3s ease;
+        
+        .birthday-title {
+            font-family: var(--font-heading);
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-
-        .upload-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        
+        .cake-icon {
+            font-size: 72px;
+            animation: bounce 2s ease-in-out infinite;
         }
-
-        .upload-btn:active {
-            transform: translateY(-1px);
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
-
-        input[type="file"] {
-            display: none;
+        
+        .birthday-subtitle {
+            font-size: 20px;
+            color: var(--color-text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 300;
         }
-
-        /* Photo Gallery */
-        .gallery {
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Photo Gallery Section */
+        .gallery-section {
+            padding: 80px 20px;
+            background-color: var(--color-white);
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 40px;
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 16px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-text-light);
+            margin-bottom: 50px;
+            font-size: 18px;
+        }
+        
+        /* Photo Grid */
+        .photo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
         }
-
-        .gallery-item {
+        
+        .photo-item {
             position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
             aspect-ratio: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #f5f5f5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+        
+        .photo-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(255, 105, 180, 0.3);
         }
-
-        .gallery-item img {
+        
+        .photo-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
-
-        .gallery-item::after {
-            content: '🔍';
+        
+        .photo-caption {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 40px 16px 16px;
+            font-size: 14px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
         }
-
-        .gallery-item:hover::after {
-            opacity: 1;
+        
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
         }
-
-        .empty-state {
+        
+        /* Loading State */
+        .loading {
             text-align: center;
-            padding: 3rem;
-            color: #999;
-            font-style: italic;
+            padding: 60px 20px;
+            font-size: 18px;
+            color: var(--color-text-light);
         }
-
+        
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 105, 180, 0.2);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 16px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Message Section */
+        .message-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(186, 143, 255, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+        }
+        
+        .message-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-white);
+            border-radius: 24px;
+            padding: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .message-card h2 {
+            font-family: var(--font-heading);
+            font-size: 36px;
+            color: var(--color-primary);
+            margin-bottom: 30px;
+        }
+        
+        .message-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--color-text);
+            font-style: italic;
+            position: relative;
+            padding: 0 40px;
+        }
+        
+        .message-text::before,
+        .message-text::after {
+            content: '\201C';
+            font-size: 60px;
+            color: var(--color-secondary);
+            position: absolute;
+            opacity: 0.3;
+        }
+        
+        .message-text::before {
+            top: -20px;
+            left: 0;
+        }
+        
+        .message-text::after {
+            content: '\201D';
+            bottom: -40px;
+            right: 0;
+        }
+        
         /* Lightbox */
         .lightbox {
             display: none;
@@ -254,390 +277,448 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--color-overlay);
-            z-index: 2000;
-            justify-content: center;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
             align-items: center;
-            padding: 2rem;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
         }
-
+        
         .lightbox.active {
             display: flex;
         }
-
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
         .lightbox-content {
+            position: relative;
             max-width: 90%;
             max-height: 90%;
-            position: relative;
-            animation: zoomIn 0.3s ease;
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .lightbox img {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 10px;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: white;
-            border: none;
-            font-size: 2rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-text);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
-
-        .lightbox-close:hover {
-            background: var(--color-primary);
-            color: white;
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         }
-
-        /* Video Section */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .video-item {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            background: white;
-        }
-
-        .video-item video {
-            width: 100%;
-            display: block;
-            background: black;
-        }
-
-        /* Message Section */
-        .message-box {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(255, 105, 180, 0.2);
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .message-box p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: var(--color-text);
-            margin: 1rem 0;
-        }
-
-        .quote {
-            font-style: italic;
-            color: var(--color-primary);
-            border-left: 4px solid var(--color-secondary);
-            padding-left: 1.5rem;
-            margin: 2rem 0;
-            text-align: left;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .cake-icon {
-                font-size: 3rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 1rem;
-            }
-
-            .video-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .message-box {
-                padding: 2rem 1.5rem;
-            }
-
-            .message-box p {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* Scroll Down Indicator */
-        .scroll-indicator {
+        
+        .lightbox-close {
             position: absolute;
-            bottom: 2rem;
+            top: 20px;
+            right: 20px;
+            background: var(--color-white);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+            z-index: 10001;
+        }
+        
+        .lightbox-close:hover {
+            transform: scale(1.1) rotate(90deg);
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .lightbox-nav:hover {
+            background: var(--color-white);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .lightbox-prev {
+            left: 20px;
+        }
+        
+        .lightbox-next {
+            right: 20px;
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            animation: bounce-arrow 2s ease-in-out infinite;
-            font-size: 2rem;
-            cursor: pointer;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 16px;
+            max-width: 80%;
+            text-align: center;
         }
-
-        @keyframes bounce-arrow {
-            0%, 100% { transform: translate(-50%, 0); }
-            50% { transform: translate(-50%, 10px); }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--color-white);
+            color: var(--color-text-light);
         }
-
-        .stars {
-            color: var(--color-secondary);
-            font-size: 1.5rem;
-            margin: 0.5rem;
+        
+        .footer p {
+            margin-bottom: 8px;
+        }
+        
+        .footer-heart {
+            color: var(--color-primary);
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.2); }
+            20%, 40% { transform: scale(1); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .birthday-title {
+                font-size: 36px;
+            }
+            
+            .cake-icon {
+                font-size: 48px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .photo-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+            
+            .message-card {
+                padding: 30px 20px;
+            }
+            
+            .message-text {
+                font-size: 16px;
+                padding: 0 20px;
+            }
+            
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .photo-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Confetti Container -->
-    <div class="confetti-container" id="confettiContainer"></div>
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="balloon">🎈</div>
-        <div class="balloon">🎈</div>
-        <div class="balloon">🎈</div>
-        <div class="balloon">🎈</div>
-        
+        <div class="balloons">
+            <div class="balloon balloon-1">🎈</div>
+            <div class="balloon balloon-2">🎈</div>
+            <div class="balloon balloon-3">🎈</div>
+            <div class="balloon balloon-4">🎈</div>
+        </div>
         <div class="hero-content">
-            <h1>Happy Birthday!</h1>
-            <div class="cake-icon">🎂</div>
-            <div class="stars">✨ ⭐ ✨</div>
-            <p>Wishing you a day filled with love, laughter, and unforgettable moments!</p>
-        </div>
-        
-        <div class="scroll-indicator" onclick="document.getElementById('upload-section').scrollIntoView({behavior: 'smooth'})">
-            ⬇️
-        </div>
-    </section>
-
-    <!-- Upload Section -->
-    <section class="section" id="upload-section">
-        <h2 class="section-title">📸 Create Your Memory Gallery</h2>
-        <div class="upload-container">
-            <button class="upload-btn" onclick="document.getElementById('photoInput').click()">
-                <span>📷</span> Upload Photos
-            </button>
-            <input type="file" id="photoInput" accept="image/*" multiple onchange="handlePhotoUpload(event)">
-            
-            <button class="upload-btn" onclick="document.getElementById('videoInput').click()">
-                <span>🎥</span> Upload Videos
-            </button>
-            <input type="file" id="videoInput" accept="video/*" multiple onchange="handleVideoUpload(event)">
+            <h1 class="birthday-title">
+                <span class="cake-icon">🎂</span>
+                <span>Happy Birthday Beautiful Soul!</span>
+                <span class="cake-icon">🎉</span>
+            </h1>
+            <p class="birthday-subtitle">
+                Wishing you the most amazing birthday filled with love and joy!
+            </p>
         </div>
     </section>
 
     <!-- Photo Gallery Section -->
-    <section class="section">
-        <h2 class="section-title">💝 Beautiful Memories</h2>
-        <div class="gallery" id="photoGallery">
-            <div class="empty-state">
-                <p>No photos yet! Click "Upload Photos" to add beautiful memories 📸</p>
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">🖼️ Beautiful Memories</h2>
+            <p class="section-subtitle">
+                A collection of precious moments we've shared together
+            </p>
+            <div id="photo-gallery" class="photo-grid">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading beautiful memories...</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="section">
-        <h2 class="section-title">🎬 Special Moments</h2>
-        <div class="video-grid" id="videoGallery">
-            <div class="empty-state">
-                <p>No videos yet! Click "Upload Videos" to add special moments 🎥</p>
+    <!-- Birthday Message Section -->
+    <section class="message-section">
+        <div class="container">
+            <div class="message-card">
+                <h2>💝 Birthday Wishes</h2>
+                <div class="message-text">
+                    May this special day bring you endless joy, laughter, and unforgettable moments. You are truly one of a kind, and I hope this year brings you everything your heart desires. Here's to another year of making beautiful memories together! 🎊✨
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Birthday Messages Section -->
-    <section class="section">
-        <h2 class="section-title">💌 Birthday Wishes</h2>
-        <div class="message-box">
-            <div class="stars">✨ 🌟 ✨</div>
-            <p>May your birthday be as wonderful as you are!</p>
-            <div class="quote">
-                "Here's to another year of amazing memories!"<br>
-                "Celebrating you today and always!"
-            </div>
-            <p>You bring so much joy and light to everyone around you. Today is all about celebrating the incredible person you are! 🎉</p>
-            <div class="stars">🎈 🎊 🎁 🎂 🎉</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Made with <span class="footer-heart">❤️</span> for a special celebration</p>
+            <p style="font-size: 12px; opacity: 0.7;">November 2025</p>
         </div>
-    </section>
+    </footer>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div id="lightbox" class="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)">‹</button>
         <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox(event)">×</button>
-            <img id="lightboxImage" src="" alt="">
+            <img id="lightbox-image" class="lightbox-image" src="" alt="Full size image">
         </div>
+        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)">›</button>
+        <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
 
     <script>
-        // Store uploaded media
-        let photos = [];
-        let videos = [];
-
-        // Create confetti on page load
-        function createConfetti() {
-            const container = document.getElementById('confettiContainer');
-            const colors = ['#FF69B4', '#FFD700', '#FF85C0', '#FFC0CB', '#87CEEB'];
+        // ==========================================
+        // CONFIGURATION - CUSTOMIZE THIS SECTION
+        // ==========================================
+        
+        const CONFIG = {
+            // GitHub Configuration
+            githubUsername: 'vaibhavterli',  // CHANGE THIS to your GitHub username
+            repositoryName: 'HBD',            // CHANGE THIS to your repository name
+            imagesFolder: 'images',           // Folder name in your repo (default: 'images')
             
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                confetti.style.animationDelay = Math.random() * 2 + 's';
-                confetti.style.opacity = Math.random();
-                container.appendChild(confetti);
-            }
+            // Birthday Person's Name
+            birthdayName: 'Beautiful Soul',   // CHANGE THIS to the birthday person's name
+            
+            // Birthday Message
+            birthdayMessage: "May this special day bring you endless joy, laughter, and unforgettable moments. You are truly one of a kind, and I hope this year brings you everything your heart desires. Here's to another year of making beautiful memories together! 🎊✨"
+        };
+        
+        // ==========================================
+        // PHOTO ARRAY - ADD YOUR PHOTOS HERE
+        // ==========================================
+        // Instructions:
+        // 1. Upload your photos to the 'images' folder in your GitHub repository
+        // 2. Add each photo to this array with the filename and caption
+        // 3. Make sure the filename matches exactly (including .jpg, .png, etc.)
+        
+        const photos = [
+            { file: 'photo1.jpg', caption: 'Beautiful memories together' },
+            { file: 'photo2.jpg', caption: 'The best of times' },
+            { file: 'photo3.jpg', caption: 'Forever friends' },
+            { file: 'photo4.jpg', caption: 'Unforgettable moments' }
+            // Add more photos here following the same format:
+            // { file: 'photo5.jpg', caption: 'Your caption here' },
+        ];
+        
+        // ==========================================
+        // APPLICATION CODE - DO NOT EDIT BELOW
+        // ==========================================
+        
+        let currentLightboxIndex = 0;
+        
+        // Generate GitHub raw URL for images
+        function getImageUrl(filename) {
+            return `https://raw.githubusercontent.com/${CONFIG.githubUsername}/${CONFIG.repositoryName}/main/${CONFIG.imagesFolder}/${filename}`;
         }
-
-        // Handle photo upload
-        function handlePhotoUpload(event) {
-            const files = event.target.files;
-            const gallery = document.getElementById('photoGallery');
+        
+        // Load photos into gallery
+        function loadGallery() {
+            const gallery = document.getElementById('photo-gallery');
             
-            if (files.length > 0) {
-                // Remove empty state if it exists
-                const emptyState = gallery.querySelector('.empty-state');
-                if (emptyState) {
-                    emptyState.remove();
+            if (photos.length === 0) {
+                gallery.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #999;">
+                        <span style="font-size: 64px; display: block; margin-bottom: 16px;">📷</span>
+                        <p>No photos yet. Add photos to the array in the HTML file!</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            gallery.innerHTML = '';
+            
+            photos.forEach((photo, index) => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.onclick = () => openLightbox(index);
+                
+                const img = document.createElement('img');
+                img.src = getImageUrl(photo.file);
+                img.alt = photo.caption || 'Birthday photo';
+                img.loading = 'lazy';
+                
+                // Add error handling for missing images
+                img.onerror = function() {
+                    this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Crect fill="%23f0f0f0" width="400" height="400"/%3E%3Ctext x="50%25" y="50%25" font-family="Arial" font-size="20" fill="%23999" text-anchor="middle" dominant-baseline="middle"%3EImage not found%3C/text%3E%3C/svg%3E';
+                };
+                
+                photoItem.appendChild(img);
+                
+                if (photo.caption) {
+                    const caption = document.createElement('div');
+                    caption.className = 'photo-caption';
+                    caption.textContent = photo.caption;
+                    photoItem.appendChild(caption);
                 }
                 
-                Array.from(files).forEach(file => {
-                    if (file.type.startsWith('image/')) {
-                        const reader = new FileReader();
-                        
-                        reader.onload = function(e) {
-                            const photoData = e.target.result;
-                            photos.push(photoData);
-                            
-                            // Create gallery item
-                            const item = document.createElement('div');
-                            item.className = 'gallery-item';
-                            item.onclick = () => openLightbox(photoData);
-                            
-                            const img = document.createElement('img');
-                            img.src = photoData;
-                            img.alt = 'Birthday memory';
-                            
-                            item.appendChild(img);
-                            gallery.appendChild(item);
-                        };
-                        
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-            
-            // Reset input
-            event.target.value = '';
+                gallery.appendChild(photoItem);
+            });
         }
-
-        // Handle video upload
-        function handleVideoUpload(event) {
-            const files = event.target.files;
-            const videoGallery = document.getElementById('videoGallery');
-            
-            if (files.length > 0) {
-                // Remove empty state if it exists
-                const emptyState = videoGallery.querySelector('.empty-state');
-                if (emptyState) {
-                    emptyState.remove();
-                }
-                
-                Array.from(files).forEach(file => {
-                    if (file.type.startsWith('video/')) {
-                        const videoURL = URL.createObjectURL(file);
-                        videos.push(videoURL);
-                        
-                        // Create video item
-                        const item = document.createElement('div');
-                        item.className = 'video-item';
-                        
-                        const video = document.createElement('video');
-                        video.src = videoURL;
-                        video.controls = true;
-                        video.preload = 'metadata';
-                        
-                        item.appendChild(video);
-                        videoGallery.appendChild(item);
-                    }
-                });
-            }
-            
-            // Reset input
-            event.target.value = '';
-        }
-
+        
         // Open lightbox
-        function openLightbox(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImage = document.getElementById('lightboxImage');
-            lightboxImage.src = imageSrc;
-            lightbox.classList.add('active');
+        function openLightbox(index) {
+            currentLightboxIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-
+        
         // Close lightbox
-        function closeLightbox(event) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxContent = document.querySelector('.lightbox-content');
-            
-            // Only close if clicking outside the image or on close button
-            if (event.target === lightbox || event.target.classList.contains('lightbox-close')) {
-                lightbox.classList.remove('active');
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Navigate lightbox
+        function navigateLightbox(direction) {
+            currentLightboxIndex = (currentLightboxIndex + direction + photos.length) % photos.length;
+            updateLightbox();
+        }
+        
+        // Update lightbox content
+        function updateLightbox() {
+            const photo = photos[currentLightboxIndex];
+            document.getElementById('lightbox-image').src = getImageUrl(photo.file);
+            const captionEl = document.getElementById('lightbox-caption');
+            if (photo.caption) {
+                captionEl.textContent = photo.caption;
+                captionEl.style.display = 'block';
+            } else {
+                captionEl.style.display = 'none';
             }
         }
-
-        // Initialize confetti on page load
-        window.addEventListener('load', () => {
-            createConfetti();
-            
-            // Remove confetti after 10 seconds
-            setTimeout(() => {
-                const container = document.getElementById('confettiContainer');
-                container.style.opacity = '0';
-                container.style.transition = 'opacity 2s ease';
-            }, 8000);
-        });
-
-        // Keyboard support for lightbox
+        
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                const lightbox = document.getElementById('lightbox');
-                lightbox.classList.remove('active');
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') navigateLightbox(-1);
+                if (e.key === 'ArrowRight') navigateLightbox(1);
             }
+        });
+        
+        // Close lightbox when clicking outside image
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+        
+        // Confetti animation
+        function startConfetti() {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const confetti = [];
+            const colors = ['#FF69B4', '#FFD700', '#BA8FFF', '#FF6B9D', '#FFC048', '#B4E7CE'];
+            
+            for (let i = 0; i < 60; i++) {
+                confetti.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    r: Math.random() * 6 + 4,
+                    d: Math.random() * 10 + 5,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    tilt: Math.random() * 10 - 5,
+                    tiltAngleIncremental: Math.random() * 0.07 + 0.05,
+                    tiltAngle: 0
+                });
+            }
+            
+            function drawConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                confetti.forEach((piece, index) => {
+                    ctx.beginPath();
+                    ctx.arc(piece.x, piece.y, piece.r, 0, Math.PI * 2);
+                    ctx.fillStyle = piece.color;
+                    ctx.fill();
+                    
+                    // Update position
+                    piece.y += piece.d;
+                    piece.tiltAngle += piece.tiltAngleIncremental;
+                    piece.x += Math.sin(piece.tiltAngle) * 2;
+                    
+                    // Reset if off screen
+                    if (piece.y > canvas.height) {
+                        confetti[index] = {
+                            x: Math.random() * canvas.width,
+                            y: -20,
+                            r: piece.r,
+                            d: piece.d,
+                            color: piece.color,
+                            tilt: piece.tilt,
+                            tiltAngleIncremental: piece.tiltAngleIncremental,
+                            tiltAngle: piece.tiltAngle
+                        };
+                    }
+                });
+                
+                requestAnimationFrame(drawConfetti);
+            }
+            
+            drawConfetti();
+            
+            // Resize canvas on window resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+        
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGallery();
+            startConfetti();
         });
     </script>
 </body>
